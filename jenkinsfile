@@ -1,0 +1,36 @@
+pipeline {
+    agent CI
+
+    stages {
+        stage('Checkout') {
+		    steps {
+                git branch: 'student-exam2'
+                credentialsId: '230790d6-1a2c-45a5-9da6-74b20d0c7b21'
+                url: 'https://github.com/psp2003/student-exam2.git'
+            }
+        }
+        stage('Launch tests') {
+            steps {
+                git rev-parse --is-inside-work-tree # timeout=10
+                git config remote.origin.url https://github.com/psp2003/student-exam2.git # timeout=10
+                git --version # timeout=10
+                git fetch --tags --progress https://github.com/psp2003/student-exam2.git +refs/heads/*:refs/remotes/origin/*
+            }
+		}
+        stage('Build Dockerimage') {
+            steps {
+                #some_commands
+            }
+        }
+        stage('Auth to hub.docker.com') {
+            steps {
+                #some_commands
+            }
+        }
+        stage('Pysh docker image') {
+            steps {
+                #some_commands
+            }
+        }
+    }
+}
