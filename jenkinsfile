@@ -1,14 +1,11 @@
 pipeline {
     agent any
-        node { 
-        label 'jenkins_agent' 
-          }
     stages {
         stage('Checkout') {
 		    steps {
-			    url: 'https://github.com/psp2003/student-exam2.git'
+			    git url: 'https://github.com/psp2003/student-exam2.git'
                 git branch: 'student-exam2'
-                credentialsId: '230790d6-1a2c-45a5-9da6-74b20d0c7b21'
+                git credentialsId: '230790d6-1a2c-45a5-9da6-74b20d0c7b21'
             }
         }
         /*stage('Launch tests') {
