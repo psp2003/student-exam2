@@ -11,22 +11,22 @@ pipeline {
         }
         stage('Launch tests') {
             steps {
-                #some_commands
+                //some_commands
             }
 		}
         stage('Build Dockerimage') {
             steps {
-                #some_commands
+                //some_commands
             }
         }
         stage('Auth to hub.docker.com') {
             steps {
-                #some_commands
+                //some_commands
             }
         }
         stage('Pysh docker image') {
             steps {
-                #some_commands
+                //some_commands
             }
         }
     }
