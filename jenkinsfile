@@ -9,7 +9,7 @@ pipeline {
                 url: 'https://github.com/psp2003/student-exam2.git'
             }
         }
-        stage('Launch tests') {
+        /*stage('Launch tests') {
             steps {
                 //some_commands
             }
@@ -28,6 +28,6 @@ pipeline {
             steps {
                 //some_commands
             }
-        }
+        }*/
     }
 }
