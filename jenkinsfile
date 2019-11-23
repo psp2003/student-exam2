@@ -16,7 +16,7 @@ pipeline {
 		coverage run -m pytest
 		coverage report'''
             }
-		}
+	    }
         stage('Build Dockerimage') {
             steps {
                 sh label: '', script: 'docker build -t minisheriff/cicd-exam:p3 .'
