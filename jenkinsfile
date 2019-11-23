@@ -1,36 +1,36 @@
 pipeline {
-    agent any
-    stages {
-        stage('Checkout') {
-		    steps {
-			    git credentialsId: '230790d6-1a2c-45a5-9da6-74b20d0c7b21', url: 'https://github.com/psp2003/student-exam2'
-            }
-        }
-        stage('Launch tests') {
-            steps {
-                sh label: '', script: '''python3 -m venv venv
-		. venv/bin/activate
-		pip install -e .
-		export FLASK_APP=js_example
-		pip install -e \'.[test]\'
-		coverage run -m pytest
-		coverage report'''
-            }
-		}
-        stage('Build Dockerimage') {
-            steps {
-                sh label: '', script: 'docker build -t minisheriff/cicd-exam:p3 .'
-            }
-        }
-        /*stage('Auth to hub.docker.com') {
-            steps {
-                //some_commands
-            }
-        }
-        stage('Pysh docker image') {
-            steps {
-                //some_commands
-            }
-        }*/
+  agent any
+  stages {
+    stage('Checkout') {
+      steps {
+        git credentialsId: '230790d6-1a2c-45a5-9da6-74b20d0c7b21', url: 'https://github.com/psp2003/student-exam2'
+      }
     }
+    stage('Launch tests') {
+      steps {
+        sh label: '', script: '''python3 -m venv venv
+        . venv/bin/activate
+        pip install -e .
+        export FLASK_APP=js_example
+        pip install -e \'.[test]\'
+        coverage run -m pytest
+        coverage report'''
+      }
+    }
+    stage('Build Dockerimage') {
+      steps {
+        sh label: '', script: 'docker build -t minisheriff/cicd-exam:p3 .'
+      }
+    }
+    stage('Auth to hub.docker.com') {
+      steps {
+        sh label: '', script: 'docker login --username=minisheriff --email=vitas1997@yandex.ru -p HUAWEImediapad1997'
+      }
+        }
+    stage('Push docker image') {
+      steps {
+        docker push minisheriff/cicd-exam:p3
+      }
+    }
+  }
 }
