@@ -19,7 +19,8 @@ pipeline {
 		}
         stage('Build Dockerimage') {
             steps {
-                sh label: '', script: 'docker build -t minisheriff/cicd-exam:p3 .'
+                sh label: '', script: '''docker start
+                docker build -t minisheriff/cicd-exam:p3'''
             }
         }
         /*stage('Auth to hub.docker.com') {
