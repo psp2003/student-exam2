@@ -16,13 +16,13 @@ pipeline {
                 coverage run -m pytest
                 coverage report'''
             }
-		}/*
+		}
         stage('Build Dockerimage') {
             steps {
                 sh label: '', script: 'docker build -t minisheriff/cicd-exam:p3'
             }
         }
-        stage('Auth to hub.docker.com') {
+        /*stage('Auth to hub.docker.com') {
             steps {
                 //some_commands
             }
