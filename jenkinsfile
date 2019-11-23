@@ -29,7 +29,7 @@ pipeline {
         }
     stage('Push docker image') {
       steps {
-        docker push minisheriff/cicd-exam:p3
+        sh label: '', script: 'docker push minisheriff/cicd-exam:p3'
       }
     }
   }
