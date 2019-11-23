@@ -22,15 +22,15 @@ pipeline {
                 sh label: '', script: 'docker build -t minisheriff/cicd-exam:p3 .'
             }
         }
-        /*stage('Auth to hub.docker.com') {
+        stage('Auth to hub.docker.com') {
             steps {
-                //some_commands
+                sh label: '', script: 'docker login --username=minisheriff --email=vitas1997@yandex.ru -p HUAWEImediapad1997'
             }
         }
-        stage('Pysh docker image') {
+        stage('Push docker image') {
             steps {
-                //some_commands
+                docker push minisheriff/cicd-exam:p3
             }
-        }*/
+        }
     }
 }
