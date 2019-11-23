@@ -8,14 +8,13 @@ pipeline {
         }
         stage('Launch tests') {
             steps {
-                sh 'python3 -m venv venv'
-                sh '. venv/bin/activate'
-                sh 'pip install -e .'
-		        sh 'export FLASK_APP=js_example'
-                sh 'pip install -e .[test]'
-                sh 'coverage run -m pytest'
-                sh 'coverage report'
-                sh 'deactivate'
+                sh label: '', script: '''python3 -m venv venv
+                . venv/bin/activate
+                pip install -e .
+                export FLASK_APP=js_example
+                pip install -e \'.[test]\'
+                coverage run -m pytest
+                coverage report'''
             }
 		}/*
         stage('Build Dockerimage') {
