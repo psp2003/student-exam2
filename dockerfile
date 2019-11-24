@@ -11,4 +11,4 @@ RUN yum update -y && \
     yum clean all && \
     rm -rf /var/cache/yum
 #для правильной работы flask
-CMD flask run
+CMD [ "flask", "run", "--host=0.0.0.0"]
